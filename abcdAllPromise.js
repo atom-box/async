@@ -1,36 +1,36 @@
-let a = function(x) {
-    console.log(x + 'a');
-    return new Promise (function(resolve, tin){
-        x += " mercury";
-        resolve(x);
+const promGen = function (obj) {
+    let n = obj.number, s = obj.name;
+    return new Promise ((resolve) => {
+        let bigger = '';
+        for(let i = 0; i < n; i++){
+            bigger += s;
+        }
+        resolve(bigger);
     })
 }
 
-let b = function(x) {
-    console.log(x + 'b');
-    return new Promise (function(resolve, tin){
-        x += " venus";
-        resolve(x);
-    })
-}
-let c = function(x) {
-    console.log(x + 'c');
-    return new Promise (function(resolve, tin){
-        x += " earth";
-        resolve(x);
-    })
-}
-let d = function(x) {
-    console.log(x + 'd');
-    return new Promise (function(resolve, tin){
-        x += " mars";
-        resolve(x);
-    })
-}
+let files = [
+    {
+        number: 4,
+        name: "gogleplex"
+    },
+    {
+        number: 21,
+        name: "kan-"
+    },
+    {
+        number: 5,
+        name: "fundraiserfour"
+    },
+    {
+        number: 5,
+        name: "graphic novel "
+    },
+]
+
+pFiles = files.map(promGen);
 
 
-a('Stoughton ')
-.then(b)
-.then(c)
-.then(d)
-.then((x) => {console.log("big payoff is: "); console.log(x);  })
+
+Promise.all(pFiles)
+.then((x) => console.log(x));
